@@ -8,6 +8,7 @@
 			</button>
 			<a class="navbar-brand" href="/"><img src="logo.png"></a>
 		</div>
+		<div ng-click="retUserId()">Check</div>
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -15,9 +16,9 @@
 				<li ng-class="{active: pathStartsWithStatePath('stories')}"><a ui-sref="stories">stories</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ui-sref-active="active"><a ui-sref="signup">signup</a></li>
-				<li ui-sref-active="active"><a ui-sref="login">login</a></li>
-				<li><button class="navbar-btn btn btn-default" ng-click="logout()">logout</button></li>
+				<li ui-sref-active="active" ng-hide="retUserId()"><a ui-sref="signup">signup</a></li>
+				<li ui-sref-active="active" ng-hide="retUserId()"><a ui-sref="login">login</a></li>
+				<li><button class="navbar-btn btn btn-default" ng-show="retUserId()" ng-click="logout()">logout</button></li>
 			</ul>
 		</div>
 	</div>

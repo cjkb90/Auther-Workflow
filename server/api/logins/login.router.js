@@ -12,6 +12,10 @@ router.get('/logout', function(req,res,next){
 	}
 });
 
+router.get('/check', function(req,res,next){
+	res.send(req.session);
+});
+
 router.post('/', function(req,res,next){
 	User.findOne({
 		email: req.body.email,
@@ -28,6 +32,11 @@ router.post('/', function(req,res,next){
 	})
 	.then(null,next);
 });
+
+//http://127.0.0.1:8080/auth/google/callback
+router.get('/google/callback', function(req,res,next){
+	res.redirect('/stories');
+})
 
 
 module.exports = router;
