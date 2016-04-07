@@ -2,6 +2,15 @@
 var router = require('express').Router();
 var User = require('../users/user.model');
 
+router.get('/logout', function(req,res,next){
+	if (req.session.userId){
+		req.session.userId = undefined;
+		res.sendStatus(200);
+	}
+	else{
+		res.sendStatus(401);
+	}
+});
 
 router.post('/', function(req,res,next){
 	User.findOne({
@@ -19,5 +28,6 @@ router.post('/', function(req,res,next){
 	})
 	.then(null,next);
 });
+
 
 module.exports = router;
